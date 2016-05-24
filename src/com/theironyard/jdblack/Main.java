@@ -33,9 +33,9 @@ public class Main {
             }
             else if(option.equalsIgnoreCase("2")){
 
-                System.out.println("Please select item number to delete");
+                System.out.println("Please select the item number to delete");
                 for (InventoryItem item : itemList) {
-                    System.out.println((itemList.indexOf(item) + 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");
+                    System.out.println((itemList.indexOf(item) + 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");// + "added to inventory");
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -43,8 +43,24 @@ public class Main {
                 System.out.println();
 
             }
+            else if(option.equalsIgnoreCase("3")){
 
+                System.out.println("Please select which item's quantity you wish to update");
+                for (InventoryItem item : itemList) {
+                    System.out.println((itemList.indexOf(item) + 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");
+                }
+                String choice = scanner.nextLine();
+                int num = Integer.valueOf(choice);
+                for (InventoryItem item : itemList){
+                    if (itemList.indexOf(item) == num -1){
+                        //System.out.println((itemList.indexOf(item)+ 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");
+                        System.out.println("Please enter the new number of " + item.item + "(s)" + " in your inventory.");
+                        String newItemAmount = scanner.nextLine();
+                        int amm = Integer.valueOf(newItemAmount);
+                        System.out.println((itemList.indexOf(item)+ 1) + "." + "You now have" + " [" + amm + "]" + " " + item.item + "(s)");
+                    }
+                }
+            }
         }
     }
-
 }
