@@ -35,6 +35,7 @@ public class Main {
                 System.out.println("[4.] Medicine");
                 System.out.println("[5.] Armor");
                 String newCategory = scanner.nextLine();
+
                 if(newCategory.equalsIgnoreCase("1")) {
                     newCategory = "Weapon";
                 }
@@ -52,9 +53,7 @@ public class Main {
                 newCategory = "Armor";
                 }
                 else{
-                    System.out.println("Invalid Item Category");
-                    System.out.println("Please choose another");
-                    return;
+                    newCategory = "Unknown";
                 }
 
                 InventoryItem item = new InventoryItem(newItem, Integer.valueOf(newAmount), newCategory);
