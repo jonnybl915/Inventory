@@ -8,13 +8,14 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        InventoryItem wand = new InventoryItem("wand", 2);
-        InventoryItem tome = new InventoryItem("tome", 3);
+
+        InventoryItem wand = new InventoryItem("wand", 2, "Weapon");
+        InventoryItem tome = new InventoryItem("tome", 3, "ReadingMaterial");
         itemList.add(wand);
         itemList.add(tome);
 
         for (InventoryItem item : itemList) {
-            System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
+            System.out.printf("%s . [ %s ] %s(s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
         }
 
         while (true) {
@@ -27,15 +28,44 @@ public class Main {
                 String newItem = scanner.nextLine();
                 System.out.println("Please type new Item Amount");
                 String newAmount = scanner.nextLine();
-                InventoryItem item = new InventoryItem(newItem, Integer.valueOf(newAmount));
+                System.out.println("Please select the Category of new item.");
+                System.out.println("[1.] Weapon");
+                System.out.println("[2.] Food");
+                System.out.println("[3.] ReadingMaterial");
+                System.out.println("[4.] Medicine");
+                System.out.println("[5.] Armor");
+                String newCategory = scanner.nextLine();
+                if(newCategory.equalsIgnoreCase("1")) {
+                    newCategory = "Weapon";
+                }
+
+                else if(newCategory.equalsIgnoreCase("2")){
+                newCategory = "Food";
+                }
+                else if(newCategory.equalsIgnoreCase("3")){
+                newCategory = "ReadingMaterial";
+                }
+                else if(newCategory.equalsIgnoreCase("4")){
+                newCategory = "Medicine";
+                }
+                else if(newCategory.equalsIgnoreCase("5")){
+                newCategory = "Armor";
+                }
+                else{
+                    System.out.println("Invalid Item Category");
+                    System.out.println("Please choose another");
+                    return;
+                }
+
+                InventoryItem item = new InventoryItem(newItem, Integer.valueOf(newAmount), newCategory);
                 itemList.add(item);
-                System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +2), newAmount, newItem);
+                System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +2), newAmount, newItem, newCategory);
             }
             else if(option.equalsIgnoreCase("2")){
 
                 System.out.println("Please select the item number to delete");
                 for (InventoryItem item : itemList) {
-                    System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
+                    System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -46,22 +76,17 @@ public class Main {
 
                 System.out.println("Please select which item's quantity you wish to update");
                 for (InventoryItem item : itemList) {
-                    System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
+                    System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
-                for (InventoryItem item : itemList){
-                    if (itemList.indexOf(item) == num -1){
-                        //System.out.println((itemList.indexOf(item)+ 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");
-                        System.out.println("Please enter the new number of " + item.item + "(s)" + " in your inventory.");
-                        String newItemAmount = scanner.nextLine();
-                        int amm = Integer.valueOf(newItemAmount);
+                InventoryItem item = itemList.get(num -1);
 
-//                        InventoryItem inv = itemList.get(item -1);
-//                        inv.amount = amount;
-                        System.out.printf("%s. You now have [%s] %s's\n", (itemList.indexOf(item)+ 1), amm, item.item);
-                    }
-                }
+                System.out.println("Please enter the new number of " + item.item + "(s)" + " in your inventory.");
+                String newItemAmount = scanner.nextLine();
+                int amm = Integer.valueOf(newItemAmount);
+                item.amount = amm;
+                System.out.printf("%s. You now have [%s] %s's\n", (itemList.indexOf(item)+ 1), amm, item.item);
             }
         }
     }

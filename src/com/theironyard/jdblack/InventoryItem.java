@@ -8,14 +8,16 @@ import java.util.Scanner;
 public class InventoryItem {
     String item;
     int amount;
-    //maybe add a boolean isEntered
+    String category;
 
-    public InventoryItem(String item, int amount) {
+    public InventoryItem() {
+    }
+
+    public InventoryItem(String item, int amount, String category) {
         this.item = item;
         this.amount = amount;
+        this.category = category;
 
 
     }
-
-
 }
