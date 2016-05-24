@@ -14,7 +14,7 @@ public class Main {
         itemList.add(tome);
 
         for (InventoryItem item : itemList) {
-            System.out.println((itemList.indexOf(item) +1) +"." + " [" + item.amount + "]" + " " + item.item + "(s)");
+            System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
         }
 
         while (true) {
@@ -29,13 +29,13 @@ public class Main {
                 String newAmount = scanner.nextLine();
                 InventoryItem item = new InventoryItem(newItem, Integer.valueOf(newAmount));
                 itemList.add(item);
-                System.out.println((itemList.indexOf(item) +2) +"." + " [" + newAmount + "]" + " " + newItem + "(s)");
+                System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +2), newAmount, newItem);
             }
             else if(option.equalsIgnoreCase("2")){
 
                 System.out.println("Please select the item number to delete");
                 for (InventoryItem item : itemList) {
-                    System.out.println((itemList.indexOf(item) + 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");// + "added to inventory");
+                    System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -46,7 +46,7 @@ public class Main {
 
                 System.out.println("Please select which item's quantity you wish to update");
                 for (InventoryItem item : itemList) {
-                    System.out.println((itemList.indexOf(item) + 1) + "." + " [" + item.amount + "]" + " " + item.item + "(s)");
+                    System.out.printf("%s . [ %s ] %s (s)\n", (itemList.indexOf(item) +1), item.amount, item.item);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -59,7 +59,7 @@ public class Main {
 
 //                        InventoryItem inv = itemList.get(item -1);
 //                        inv.amount = amount;
-                        System.out.println((itemList.indexOf(item)+ 1) + "." + "You now have" + " [" + amm + "]" + " " + item.item + "(s)");
+                        System.out.printf("%s. You now have [%s] %s's\n", (itemList.indexOf(item)+ 1), amm, item.item);
                     }
                 }
             }
