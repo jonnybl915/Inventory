@@ -41,7 +41,6 @@ public class Main {
                 int num = Integer.valueOf(choice);
                 itemList.remove(num-1);
                 System.out.println();
-
             }
             else if(option.equalsIgnoreCase("3")){
 
