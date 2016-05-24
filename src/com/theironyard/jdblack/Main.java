@@ -8,12 +8,6 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
-        InventoryItem wand = new InventoryItem("wand", 2, "Weapon");
-        InventoryItem tome = new InventoryItem("tome", 3, "ReadingMaterial");
-        itemList.add(wand);
-        itemList.add(tome);
-
         for (InventoryItem item : itemList) {
             System.out.printf("%s . [ %s ] %s(s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
         }
@@ -22,6 +16,7 @@ public class Main {
             System.out.println("1. Create new Item");
             System.out.println("2. Remove Item");
             System.out.println("3. Update Quantity");
+            System.out.println("4. List Items");
             String option = scanner.nextLine();
             if (option.equalsIgnoreCase("1")) {
 
@@ -45,7 +40,7 @@ public class Main {
 
                 System.out.println("Please select the item number to delete");
                 for (InventoryItem item : itemList) {
-                    System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
+                    System.out.printf("%s . [ %s ] %s(s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -56,7 +51,7 @@ public class Main {
 
                 System.out.println("Please select which item's quantity you wish to update");
                 for (InventoryItem item : itemList) {
-                    System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
+                    System.out.printf("%s . [ %s ] %s(s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
@@ -67,6 +62,11 @@ public class Main {
                 int amm = Integer.valueOf(newItemAmount);
                 item.amount = amm;
                 System.out.printf("%s. You now have [%s] %s's\n", (itemList.indexOf(item)+ 1), amm, item.item);
+            }
+            else if(option.equalsIgnoreCase("4")){
+                for (InventoryItem item : itemList) {
+                    System.out.printf("%s . [ %s ] %s(s) [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
+                }
             }
         }
     }
