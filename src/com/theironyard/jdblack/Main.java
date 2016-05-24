@@ -56,6 +56,9 @@ public class Main {
                         System.out.println("Please enter the new number of " + item.item + "(s)" + " in your inventory.");
                         String newItemAmount = scanner.nextLine();
                         int amm = Integer.valueOf(newItemAmount);
+
+//                        InventoryItem inv = itemList.get(item -1);
+//                        inv.amount = amount;
                         System.out.println((itemList.indexOf(item)+ 1) + "." + "You now have" + " [" + amm + "]" + " " + item.item + "(s)");
                     }
                 }
