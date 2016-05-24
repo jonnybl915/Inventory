@@ -5,9 +5,9 @@ package com.theironyard.jdblack;
  */
 public class Medicine extends InventoryItem {
 
-    public Medicine(String item, int amount, String category){
+    public Medicine(String item, int amount){
         this.item = item;
         this.amount = amount;
-        this.category = category;
+        this.category = "Medicine";
     }
 }

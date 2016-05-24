@@ -5,9 +5,9 @@ package com.theironyard.jdblack;
  */
 public class ReadingMaterial extends InventoryItem {
 
-    public ReadingMaterial(String item, int amount, String category){
+    public ReadingMaterial(String item, int amount){
         this.item = item;
         this.amount = amount;
-        this.category = category;
+        this.category = "ReadingMaterial";
     }
 }

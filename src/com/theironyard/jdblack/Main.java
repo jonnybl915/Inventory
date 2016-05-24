@@ -23,11 +23,13 @@ public class Main {
             System.out.println("2. Remove Item");
             System.out.println("3. Update Quantity");
             String option = scanner.nextLine();
-            if (option.equalsIgnoreCase("1")){
+            if (option.equalsIgnoreCase("1")) {
+
                 System.out.println("Please type new Item Name");
                 String newItem = scanner.nextLine();
                 System.out.println("Please type new Item Amount");
                 String newAmount = scanner.nextLine();
+                int amount = Integer.valueOf(newAmount);
                 System.out.println("Please select the Category of new item.");
                 System.out.println("[1.] Weapon");
                 System.out.println("[2.] Food");
@@ -35,30 +37,9 @@ public class Main {
                 System.out.println("[4.] Medicine");
                 System.out.println("[5.] Armor");
                 String newCategory = scanner.nextLine();
-
-                if(newCategory.equalsIgnoreCase("1")) {
-                    newCategory = "Weapon";
-                }
-
-                else if(newCategory.equalsIgnoreCase("2")){
-                newCategory = "Food";
-                }
-                else if(newCategory.equalsIgnoreCase("3")){
-                newCategory = "ReadingMaterial";
-                }
-                else if(newCategory.equalsIgnoreCase("4")){
-                newCategory = "Medicine";
-                }
-                else if(newCategory.equalsIgnoreCase("5")){
-                newCategory = "Armor";
-                }
-                else{
-                    newCategory = "Unknown";
-                }
-
-                InventoryItem item = new InventoryItem(newItem, Integer.valueOf(newAmount), newCategory);
+                InventoryItem item = createItem(newItem, amount, newCategory);
                 itemList.add(item);
-                System.out.printf("%s . [ %s ] %s (s) [%s]\n", (itemList.indexOf(item) +2), newAmount, newItem, newCategory);
+
             }
             else if(option.equalsIgnoreCase("2")){
 
@@ -88,5 +69,23 @@ public class Main {
                 System.out.printf("%s. You now have [%s] %s's\n", (itemList.indexOf(item)+ 1), amm, item.item);
             }
         }
+    }
+    public static InventoryItem createItem(String newItem, int newAmount, String newCategory) {
+
+        switch (newCategory.toLowerCase()){
+            case "1":
+                return new Weapon(newItem, newAmount);
+            case "2":
+                return new Food(newItem, newAmount);
+            case "3":
+                return new ReadingMaterial(newItem, newAmount);
+            case "4":
+                return new Medicine(newItem, newAmount);
+            case "5":
+                return new Armor(newItem, newAmount);
+            default:
+                System.out.println("Please choose different number");
+        }
+        return null;
     }
 }

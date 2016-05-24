@@ -5,9 +5,9 @@ package com.theironyard.jdblack;
  */
 public class Weapon extends InventoryItem {
 
-    public Weapon(String item, int amount, String category) {
+    public Weapon(String item, int amount) {
         this.item = item;
         this.amount = amount;
-        this.category = category;
+        this.category = "Weapon";
     }
 }
