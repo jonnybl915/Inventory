@@ -12,12 +12,4 @@ public class InventoryItem {
 
     public InventoryItem() {
     }
-
-    public InventoryItem(String item, int amount, String category) {
-        this.item = item;
-        this.amount = amount;
-        this.category = category;
-
-
-    }
 }

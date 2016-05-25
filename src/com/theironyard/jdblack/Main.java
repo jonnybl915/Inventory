@@ -24,11 +24,11 @@ public class Main {
                 String newItem = scanner.nextLine();
                 System.out.println("Please type new Item Amount");
                 String newAmount = scanner.nextLine();
-                int amount = Integer.valueOf(newAmount);
 
-                if(amount !=1){
+                int amount = Integer.valueOf(newAmount);
+                if(amount > 1){
                     String temp = newItem.concat("s");
-                            newItem = temp;
+                    newItem = temp;
                 }
 
                 System.out.println("Please select the Category of new item.");
@@ -40,13 +40,14 @@ public class Main {
                 String newCategory = scanner.nextLine();
                 InventoryItem item = createItem(newItem, amount, newCategory);
                 itemList.add(item);
+                System.out.printf("You have added %s %s to your inventory.\n", newAmount, newItem);
 
             }
             else if(option.equalsIgnoreCase("2")){
 
                 System.out.println("Please select the item number to delete");
                 for (InventoryItem item : itemList) {
-                    System.out.printf("%s . [ %s ] %s [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
+                    System.out.printf("%s. [ %s ] %s [%s]\n", (itemList.indexOf(item) +1), item.amount, item.item, item.category);
                 }
                 String choice = scanner.nextLine();
                 int num = Integer.valueOf(choice);
