@@ -39,7 +39,9 @@ public class Main {
                 System.out.println("[5.] Armor");
                 String newCategory = scanner.nextLine();
                 InventoryItem item = createItem(newItem, amount, newCategory);
-                itemList.add(item);
+                if(item != null){
+                    itemList.add(item);
+                }
                 System.out.printf("You have added %s %s to your inventory.\n", newAmount, newItem);
 
             }
@@ -91,7 +93,7 @@ public class Main {
             case "5":
                 return new Armor(newItem, newAmount);
             default:
-                System.out.println("Please choose different number");
+              System.out.println("Please choose different number"); //todo make this loop back to the beginning of switch statement
         }
         return null;
     }
